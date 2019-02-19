@@ -1,6 +1,9 @@
 package com.mysql.demo1.repository;
 
+import java.util.stream.IntStream;
+
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,12 @@ public class UserJpaRepositoryTest {
 	@Autowired
 	private UserJpaRepository userJpaRepo;
 	
+	@Before
+	public void setup() {
+		
+		IntStream.range(1, 10).forEach(i->userJpaRepo.save(User.builder().name("A"+i).age(10+i).sex(i%2==0?User.SEX.M:User.SEX.F).build()));
+	}
+	
 	@Test
 	public void testSave() {
 		userJpaRepo.deleteAll();
@@ -24,5 +33,7 @@ public class UserJpaRepositoryTest {
 		userJpaRepo.save(u1);
 		Assert.assertEquals(1, userJpaRepo.count());
 	}
+	
+	
 
 }

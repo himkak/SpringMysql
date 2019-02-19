@@ -52,6 +52,13 @@
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<!-- <version>1.4.194</version> -->
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>

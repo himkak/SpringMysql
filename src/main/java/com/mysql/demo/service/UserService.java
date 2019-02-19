@@ -19,11 +19,15 @@ public class UserService {
 		return userRepo.findById(id);
 	}
 	
-	public void createUser(User user) {
-		userRepo.save(user);
+	public int createUser(User user) {
+		return userRepo.save(user).getId();
 	}
 
 	public List<User> getAllUsers() {
 		return userRepo.findAll();
+	}
+	
+	public List<User> getUser(String name) {
+		return userRepo.findByName(name);
 	}
 }

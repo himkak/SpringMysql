@@ -20,20 +20,25 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping("/{userId}")
+	@GetMapping("/id/{userId}")
 	public User getUser(@PathVariable int userId) {
 		
 		return userService.getUser(userId).get();
 	}
 	
 	@PostMapping
-	public void createUser(@RequestBody User user) {
-		userService.createUser(user);
+	public int createUser(@RequestBody User user) {
+		return userService.createUser(user);
 	}
 	
 	@GetMapping
 	public List<User> getAllUsers(){
 		return userService.getAllUsers();
+	}
+	
+	@GetMapping("/name/{name}")
+	public List<User> getUser(@PathVariable String name){
+		return userService.getUser(name);
 	}
 
 }

@@ -7,3 +7,6 @@ DB used is mysql
 
 ## Setup Lombok in eclipse:
 https://www.vogella.com/tutorials/Lombok/article.html 
+
+## Fixes TODO
+Entity enum not being saved properly
