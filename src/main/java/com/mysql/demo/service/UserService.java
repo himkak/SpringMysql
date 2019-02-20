@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.mysql.demo.entity.User;
@@ -23,8 +25,8 @@ public class UserService {
 		return userRepo.save(user).getId();
 	}
 
-	public List<User> getAllUsers() {
-		return userRepo.findAll();
+	public Page<User> getAllUsers(int page, int size) {
+		return userRepo.findAll(PageRequest.of(page, size));
 	}
 	
 	public List<User> getUser(String name) {

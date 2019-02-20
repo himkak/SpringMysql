@@ -31,9 +31,9 @@ public class UserController {
 		return userService.createUser(user);
 	}
 	
-	@GetMapping
-	public List<User> getAllUsers(){
-		return userService.getAllUsers();
+	@GetMapping("/{page}/{size}")
+	public List<User> getAllUsers(@PathVariable int page,@PathVariable  int size){
+		return userService.getAllUsers(page, size).getContent();
 	}
 	
 	@GetMapping("/name/{name}")
