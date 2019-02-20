@@ -26,9 +26,12 @@ public class UserService {
 		return userRepo.save(user).getId();
 	}
 
-	public List<User> getAllUsers(int page, int size) {
-		return userRepo.findAll(Sort.by("name"));
-		//return userRepo.findAll(PageRequest.of(page, size));
+	public List<User> getAllUsersSorted(String paramname) {
+		return userRepo.findAll(Sort.by(Sort.Direction.ASC,paramname));
+	}
+	
+	public Page<User> getAllUsersPaged(int page, int size) {
+		return userRepo.findAll(PageRequest.of(page, size));
 	}
 	
 	public List<User> getUser(String name) {

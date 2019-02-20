@@ -3,6 +3,7 @@ package com.mysql.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,9 +32,14 @@ public class UserController {
 		return userService.createUser(user);
 	}
 	
-	@GetMapping("/{page}/{size}")
+	@GetMapping("/sort/paramname")
+	public List<User> getAllUsersSorted(@PathVariable String paramname){
+		return userService.getAllUsersSorted(paramname);
+	}
+	
+	@GetMapping("/page/{page}/{size}")
 	public List<User> getAllUsers(@PathVariable int page,@PathVariable  int size){
-		return userService.getAllUsers(page, size);
+		return userService.getAllUsersPaged(page, size).getContent();
 	}
 	
 	@GetMapping("/name/{name}")
