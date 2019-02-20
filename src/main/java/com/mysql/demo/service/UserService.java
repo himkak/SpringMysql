@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.mysql.demo.entity.User;
@@ -25,8 +26,9 @@ public class UserService {
 		return userRepo.save(user).getId();
 	}
 
-	public Page<User> getAllUsers(int page, int size) {
-		return userRepo.findAll(PageRequest.of(page, size));
+	public List<User> getAllUsers(int page, int size) {
+		return userRepo.findAll(Sort.by("name"));
+		//return userRepo.findAll(PageRequest.of(page, size));
 	}
 	
 	public List<User> getUser(String name) {

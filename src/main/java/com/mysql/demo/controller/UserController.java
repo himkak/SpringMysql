@@ -33,7 +33,7 @@ public class UserController {
 	
 	@GetMapping("/{page}/{size}")
 	public List<User> getAllUsers(@PathVariable int page,@PathVariable  int size){
-		return userService.getAllUsers(page, size).getContent();
+		return userService.getAllUsers(page, size);
 	}
 	
 	@GetMapping("/name/{name}")
