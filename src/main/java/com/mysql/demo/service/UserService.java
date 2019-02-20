@@ -30,4 +30,8 @@ public class UserService {
 	public List<User> getUser(String name) {
 		return userRepo.findByName(name);
 	}
+	
+	public List<User> getUsersByAgeRange(int age1, int age2){
+		return userRepo.queryByAgeRange(age1, age2);
+	}
 }
