@@ -1,4 +1,4 @@
-package com.mysql.demo1.repository;
+package com.mysql.demo.repository;
 
 import java.util.stream.IntStream;
 
@@ -7,14 +7,14 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.mysql.demo.SpringMysqlApplication;
 import com.mysql.demo.entity.User;
+import com.mysql.demo1.repository.UserJpaRepository;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=SpringMysqlApplication.class)
+@DataJpaTest
 public class UserJpaRepositoryTest {
 	
 	@Autowired
